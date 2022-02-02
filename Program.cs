@@ -3,6 +3,12 @@ using psi.context;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options => {
+  options.AddDefaultPolicy(builder => {
+    builder.WithOrigins("http://localhost:8000");
+  });
+});
+
 // register context
 builder.Services.AddDbContext<inventoryContext>(options =>
   options.UseMySQL(builder.Configuration.GetConnectionString("MySQL")
@@ -18,6 +24,8 @@ builder.Services.AddDbContext<customerContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
+
+app.UseCors();
 
 // register endpoint/route
 app.MapCustomerEndpoints();
