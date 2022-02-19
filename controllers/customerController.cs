@@ -18,7 +18,7 @@ public static class customerController {
   ) {
     context.customers.Add(customer);
     await context.SaveChangesAsync();
-    return Results.Ok();
+    return Results.Ok(customer);
   }
   private static async Task<IResult> putCustomer(
       int id,
