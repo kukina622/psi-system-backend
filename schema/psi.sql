@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-01-28 11:21:39
+-- 產生時間： 2022-02-19 19:26:15
 -- 伺服器版本： 10.4.19-MariaDB
 -- PHP 版本： 7.4.20
 
@@ -50,7 +50,24 @@ CREATE TABLE `inventories` (
   `inventory_name` mediumtext NOT NULL,
   `purchase_price` int(11) NOT NULL,
   `inventory_quantity` int(11) NOT NULL,
-  `purchase_time` date NOT NULL
+  `purchase_time` date NOT NULL,
+  `purchase_manufacturer` mediumtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `purchase_record`
+--
+
+CREATE TABLE `purchase_record` (
+  `purchase_id` int(11) NOT NULL,
+  `purchase_type` mediumtext NOT NULL,
+  `purchase_name` mediumtext NOT NULL,
+  `purchase_price` int(11) NOT NULL,
+  `purchase_quantity` int(11) NOT NULL,
+  `purchase_time` date NOT NULL,
+  `purchase_manufacturer` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -82,6 +99,12 @@ ALTER TABLE `inventories`
   ADD PRIMARY KEY (`inventory_id`);
 
 --
+-- 資料表索引 `purchase_record`
+--
+ALTER TABLE `purchase_record`
+  ADD PRIMARY KEY (`purchase_id`);
+
+--
 -- 資料表索引 `users`
 --
 ALTER TABLE `users`
@@ -102,6 +125,12 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `inventories`
   MODIFY `inventory_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `purchase_record`
+--
+ALTER TABLE `purchase_record`
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
