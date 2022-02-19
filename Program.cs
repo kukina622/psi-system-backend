@@ -21,7 +21,9 @@ builder.Services.AddDbContext<userContext>(options =>
 builder.Services.AddDbContext<customerContext>(options =>
   options.UseMySQL(builder.Configuration.GetConnectionString("MySQL")
 ));
-
+builder.Services.AddDbContext<purchaseRecordContext>(options =>
+  options.UseMySQL(builder.Configuration.GetConnectionString("MySQL")
+));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -32,5 +34,6 @@ app.UseCors();
 // register endpoint/route
 app.MapCustomerEndpoints();
 app.MapInventoryEndpoints();
+app.MapPurchaseEndpoints();
 
 app.Run("http://localhost:3000");
