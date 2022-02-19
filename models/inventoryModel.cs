@@ -8,5 +8,6 @@ namespace psi.model {
     public int purchase_price { get; set; }
     public int inventory_quantity { get; set; }
     public DateTime purchase_time { get; set; }
+    public string purchase_manufacturer	 { get; set; } = string.Empty;
   }
 }

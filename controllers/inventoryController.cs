@@ -33,6 +33,7 @@ public static class inventoryController {
     inventory.purchase_price = updateInventory.purchase_price;
     inventory.inventory_quantity = updateInventory.inventory_quantity;
     inventory.purchase_time = updateInventory.purchase_time;
+    inventory.purchase_manufacturer = updateInventory.purchase_manufacturer;
     await context.SaveChangesAsync();
     return Results.NoContent();
   }
